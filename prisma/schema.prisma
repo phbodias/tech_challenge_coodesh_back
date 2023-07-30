@@ -11,13 +11,20 @@ datasource db {
 }
 
 model Transactions {
-  id        Int      @id @default(autoincrement())
-  type      Int
+  id        Int             @id @default(autoincrement())
+  type      TransactionType
   product   String
   seller    String
   value     String
   date      String
-  createdAt DateTime @default(now())
+  createdAt DateTime        @default(now())
 
   @@map("transactions")
+}
+
+enum TransactionType {
+  producer_sale
+  affiliate_sale
+  paid_commission
+  paid_received
 }
